@@ -21,16 +21,16 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex text-slate-300 hover:text-sky-400 text-5xl font-semibold content-center justify-center m-3">
+      <div className="flex text-sky-300 hover:text-sky-100 text-7xl font-bold content-center justify-center my-3">
         Genga
       </div>
 
-      <div className="flex justify-center text-slate-300 text-xl font-medium">
+      <div className="flex justify-center text-sky-50 text-xl font-medium">
         <p>Guess the anime based on the given clues!</p>
       </div>
-
+      
       {/* Display fetched API data */}
-      <div className="flex justify-center text-slate-300 text-xl font-medium" id="api-data">
+      <div className="flex justify-center text-sky-50 text-xl font-medium" id="api-data">
         {error && <p>Error fetching data: {error.message}</p>}
         {apiData ? (
           <div>
