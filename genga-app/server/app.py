@@ -23,6 +23,3 @@ print(f"Title: {title}")
 print(f"Ranking: {ranking}")
 print(f"Status: {status}")
 
-# print(results[0])
-
-# print(response.json())
