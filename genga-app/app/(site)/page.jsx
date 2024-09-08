@@ -35,7 +35,7 @@ export default function Home() {
         {apiData ? (
           <div>
             <p>Name: {apiData.name}</p>
-            <p>Description: {apiData.description}</p>
+            <p>Ranking: {apiData.ranking}</p>
             <p>Status: {apiData.status}</p>
           </div>
         ) : (

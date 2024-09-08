@@ -11,6 +11,18 @@ headers = {
 }
 
 response = requests.get(url, headers=headers, params=querystring)
-json_data = json.loads(response)
+results = response.json()
 
-print(response.json())
+anime = results['data'][0]
+title = anime['title']
+ranking = anime['ranking']
+status = anime['status']
+
+# Output the extracted information
+print(f"Title: {title}")
+print(f"Ranking: {ranking}")
+print(f"Status: {status}")
+
+# print(results[0])
+
+# print(response.json())
