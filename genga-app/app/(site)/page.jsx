@@ -124,6 +124,12 @@ export default function Home() {
       <div className="text-center mt-4">
         <h1>Current Stage: {stage}</h1>
       </div>
+      {/* Footer */}
+      <footer className="text-center text-sm mt-8 text-slate-500">
+        <p>
+          Developed by <a href="https://github.com/tushardubey02" className=" hover:underline">Tushar Dubey</a>
+        </p>
+      </footer>
     </div>
   );
 }
