@@ -5,6 +5,8 @@ import React, { useState, useEffect } from "react";
 export default function Home() {
   const [apiData, setApiData] = useState(null); // To store API data
   const [error, setError] = useState(null); // To store any fetch errors
+  const [stage, setStage] = useState(0); // To manage the reveal stage
+  const [searchTerm, setSearchTerm] = useState(""); // For search box input
 
   // Fetch data when component mounts
   useEffect(() => {
@@ -19,8 +21,6 @@ export default function Home() {
       .catch(error => setError(error)); // Handle any errors
   }, []); // Empty dependency array to run only once when the component mounts
 
-  const [stage, setStage] = useState(0);
-
   const incrementStage = async () => {
     try {
       const response = await fetch('http://127.0.0.1:5000/increment_stage', {
@@ -34,6 +34,48 @@ export default function Home() {
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const handleSearch = () => {
+    // Call an API endpoint to search the anime based on searchTerm (implement API logic accordingly)
+    console.log('Searching for:', searchTerm);
+    // Reset stage if a new search is made
+    setStage(0);
+  };
+
+  const handleSkip = () => {
+    // Logic to skip the current anime and fetch the next one
+    console.log('Skipping current anime');
+    // Reset the stage and fetch a new anime
+    setStage(0);
+    // Call an API to fetch the next anime (not implemented in this snippet)
+  };
+
+  // Function to mask the anime name based on the current stage
+  const maskName = (name, stage) => {
+    if (!name) return '';
+
+    if (stage === 0) {
+      return '*'.repeat(name.length); // Fully masked
+    }
+
+    if (stage === 1) {
+      // Reveal the first letter of each word
+      return name
+        .split(' ')
+        .map(word => word[0] + '*'.repeat(word.length - 1))
+        .join(' ');
+    }
+
+    if (stage >= 4) {
+      return name; // Fully revealed only at stage 4 or beyond
+    }
+
+    // In stages 2 and 3, we still want to show the masked name from stage 1
+    return name
+      .split(' ')
+      .map(word => word[0] + '*'.repeat(word.length - 1))
+      .join(' ');
   };
 
   return (
@@ -51,18 +93,36 @@ export default function Home() {
         {error && <p>Error: {error.message}</p>}
         {apiData ? (
           <div>
-            <p className="text-3xl text-center font-bold mb-3">{apiData.name}</p>
-            <p>Ranking: {apiData.ranking}</p>
-            <p>Genre: {apiData.genre}</p>
+            <p className="text-3xl text-center font-bold mb-3">{maskName(apiData.name, stage)}</p>
+            {stage >= 2 && <p>Genre: {apiData.genre}</p>} {/* Reveal genre at stage 2 */}
+            {stage >= 3 && <p>Ranking: {apiData.ranking}</p>} {/* Reveal ranking at stage 3 */}
           </div>
         ) : (
-          <p></p>
+          <p>Loading...</p>
         )}
       </div>
 
-      <div>
+      <div className="flex justify-center my-5">
+        <button className="bg-sky-500 text-white px-4 py-2 rounded" onClick={incrementStage}>Reveal More</button>
+      </div>
+
+      {/* Search box and buttons */}
+      <div className="flex flex-col items-center">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search anime..."
+          className="border border-gray-300 px-4 py-2 rounded-md"
+        />
+        <div className="flex space-x-4 mt-4">
+          <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleSearch}>Submit</button>
+          <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={handleSkip}>Skip</button>
+        </div>
+      </div>
+
+      <div className="text-center mt-4">
         <h1>Current Stage: {stage}</h1>
-        <button onClick={incrementStage}>Increment Stage</button>
       </div>
     </div>
   );
