@@ -113,7 +113,7 @@ export default function Home() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search anime..."
-          className="placeholder:italic placeholder:text-slate-400 block bg-slate-900 border text-sky-50 border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+          className="placeholder:italic placeholder:text-slate-400 block w-1/4 bg-slate-900 border text-sky-50 border-slate-300 rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         />
         <div className="flex space-x-4 mt-4">
           <button className="bg-sky-500 text-white px-4 py-2 rounded" onClick={handleSearch}>Submit</button>
