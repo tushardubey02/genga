@@ -102,22 +102,22 @@ export default function Home() {
         )}
       </div>
 
-      <div className="flex justify-center my-5">
+      {/* <div className="flex justify-center my-5">
         <button className="bg-sky-500 text-white px-4 py-2 rounded" onClick={incrementStage}>Reveal More</button>
-      </div>
+      </div> */}
 
       {/* Search box and buttons */}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center my-2">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search anime..."
-          className="border border-gray-300 px-4 py-2 rounded-md"
+          className="placeholder:italic placeholder:text-slate-400 block bg-slate-900 border text-sky-50 border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         />
         <div className="flex space-x-4 mt-4">
-          <button className="bg-green-500 text-white px-4 py-2 rounded" onClick={handleSearch}>Submit</button>
-          <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={handleSkip}>Skip</button>
+          <button className="bg-sky-500 text-white px-4 py-2 rounded" onClick={handleSearch}>Submit</button>
+          <button className="border-solid border-2 border-sky-500 text-white px-4 py-2 rounded" onClick={incrementStage}>Skip</button>
         </div>
       </div>
 
