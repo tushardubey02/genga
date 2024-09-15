@@ -8,7 +8,7 @@ export default function Home() {
 
   // Fetch data when component mounts
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/get_data')
+    fetch('http://127.0.0.1:5000/anime')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -25,12 +25,12 @@ export default function Home() {
         Genga
       </div>
 
-      <div className="flex justify-center text-sky-50 text-xl font-medium">
+      <div className="flex justify-center text-sky-50 text-xl font-medium my-3 italic">
         <p>Guess the anime based on the given clues!</p>
       </div>
       
       {/* Display fetched API data */}
-      <div className="flex justify-center text-sky-50 text-xl font-medium" id="api-data">
+      <div className="flex justify-center text-sky-50 text-xl font-light" id="api-data">
         {error && <p>Error fetching data: {error.message}</p>}
         {apiData ? (
           <div>
