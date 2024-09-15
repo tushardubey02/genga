@@ -107,7 +107,7 @@ export default function Home() {
       </div> */}
 
       {/* Search box and buttons */}
-      <div className="flex flex-col items-center my-2">
+      <div className="flex flex-col items-center my-3">
         <input
           type="text"
           value={searchTerm}
