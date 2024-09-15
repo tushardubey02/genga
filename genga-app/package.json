@@ -11,6 +11,8 @@
   "dependencies": {
     "next": "^14.2.8",
     "node": "^22.8.0",
+    "numpy": "^0.0.1",
+    "pandas": "^0.0.3",
     "react": "^18",
     "react-dom": "^18",
     "requests": "^0.3.0"

@@ -31,7 +31,7 @@ export default function Home() {
       
       {/* Display fetched API data */}
       <div className="flex justify-center text-sky-50 text-xl font-normal" id="api-data">
-        {error && <p>Error fetching data: {error.message}</p>}
+        {error && <p>Error: {error.message}</p>}
         {apiData ? (
           <div>
             <p className="font-mono text-xl">{apiData.name}</p>
@@ -39,7 +39,7 @@ export default function Home() {
             <p>Status: {apiData.status}</p>
           </div>
         ) : (
-          <p>Loading data...</p>
+          <p></p>
         )}
       </div>
     </div>
