@@ -51,9 +51,9 @@ export default function Home() {
         {error && <p>Error: {error.message}</p>}
         {apiData ? (
           <div>
-            <p className="font-mono text-xl">{apiData.name}</p>
+            <p className="text-3xl text-center font-bold mb-3">{apiData.name}</p>
             <p>Ranking: {apiData.ranking}</p>
-            <p>Status: {apiData.status}</p>
+            <p>Genre: {apiData.genre}</p>
           </div>
         ) : (
           <p></p>

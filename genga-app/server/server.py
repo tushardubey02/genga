@@ -22,7 +22,7 @@ print(nameField, userRating, status)
 # Define a route that returns JSON data
 @app.route('/anime', methods=['GET'])
 def get_data():
-    return {'name': nameField, 'ranking': ratingField, 'status': statusField}
+    return {'name': name, 'ranking': userRating, 'genre': anime["genre"]}
 
 # Define a route to increment the stage
 @app.route('/increment_stage', methods=['POST'])
