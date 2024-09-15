@@ -56,8 +56,12 @@ export default function Home() {
     if (!name) return '';
 
     if (stage === 0) {
-      return '*'.repeat(name.length); // Fully masked
+      return name
+        .split(' ')
+        .map(word => '*'.repeat(word.length)) // Mask each word
+        .join('_'); // Replace spaces with underscores
     }
+    
 
     if (stage === 1) {
       // Reveal the first letter of each word
