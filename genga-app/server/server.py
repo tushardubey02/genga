@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests, json
 from show import show
@@ -23,6 +23,16 @@ print(nameField, userRating, status)
 @app.route('/anime', methods=['GET'])
 def get_data():
     return {'name': nameField, 'ranking': ratingField, 'status': statusField}
+
+# Define a route to increment the stage
+@app.route('/increment_stage', methods=['POST'])
+def increment_stage():
+    global stage
+    stage += 1
+    print("Stage: ", stage)
+    return jsonify({'stage': stage})
+
+# print("Stage: ", stage)
 
 if __name__ == '__main__':
     app.run(debug=True)

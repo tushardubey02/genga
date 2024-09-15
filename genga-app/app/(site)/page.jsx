@@ -19,6 +19,23 @@ export default function Home() {
       .catch(error => setError(error)); // Handle any errors
   }, []); // Empty dependency array to run only once when the component mounts
 
+  const [stage, setStage] = useState(0);
+
+  const incrementStage = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/increment_stage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setStage(data.stage);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div>
       <div className="flex text-sky-300 hover:text-sky-100 text-7xl font-bold content-center justify-center my-3">
@@ -41,6 +58,11 @@ export default function Home() {
         ) : (
           <p></p>
         )}
+      </div>
+
+      <div>
+        <h1>Current Stage: {stage}</h1>
+        <button onClick={incrementStage}>Increment Stage</button>
       </div>
     </div>
   );
