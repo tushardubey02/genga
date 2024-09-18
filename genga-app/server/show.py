@@ -7,3 +7,5 @@ def show() -> dict:
     selection = df.iloc[random_index]  # Select the row at the random index
     print(selection)   # Print the selected row
     return selection.to_dict()  # Convert the row to a dictionary
+
+# show()

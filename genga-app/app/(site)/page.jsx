@@ -71,7 +71,7 @@ export default function Home() {
         .join(' ');
     }
 
-    if (stage >= 4) {
+    if (stage >= 5) {
       return name; // Fully revealed only at stage 4 or beyond
     }
 
@@ -100,6 +100,7 @@ export default function Home() {
             <p className="text-3xl text-center font-bold mb-3">{maskName(apiData.name, stage)}</p>
             {stage >= 2 && <p>Genre: {apiData.genre}</p>} {/* Reveal genre at stage 2 */}
             {stage >= 3 && <p>Ranking: {apiData.ranking}</p>} {/* Reveal ranking at stage 3 */}
+            {stage >= 4 && <p>Studio: {apiData.studio}</p>} {/* Reveal ranking at stage 4 */}
           </div>
         ) : (
           <p>Loading...</p>
