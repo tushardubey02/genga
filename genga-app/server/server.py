@@ -1,14 +1,14 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import requests, json
-from show import show
+from data import get_show
 
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.0.1:3000"]}})
   # Enable CORS for all routes
 
-anime = show() # Get the anime data
+anime = get_show() # Get the anime data
 stage = 0 # Set the stage to 0
 name,userRating,studio = anime["Name"],anime["Rating"],anime["Studio"] # Get the name, rating and status of the anime
 nameField, ratingField, statusField = "", "???", "???" # Initialize the fields 
