@@ -132,7 +132,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="text-center text-sm mt-8 text-slate-500">
         <p>
-          Developed by <a href="https://github.com/tushardubey02" className=" hover:underline">Tushar Dubey</a>
+          Developed by <a href="https://github.com/tushardubey02" className="hover:underline" target="_blank" rel="noopener noreferrer">Tushar Dubey</a>
         </p>
       </footer>
     </div>
