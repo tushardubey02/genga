@@ -10,7 +10,7 @@ CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.
 
 anime = get_show() # Get the anime data
 stage = 0 # Set the stage to 0
-name,userRating,studio = anime["Name"],anime["Rating"],anime["Studio"] # Get the name, rating and status of the anime
+name,userRating,studio = anime["English name"],anime["Popularity"],anime["Producers"] # Get the name, rating and status of the anime
 nameField, ratingField, statusField = "", "???", "???" # Initialize the fields 
 for x in name:
     if x != " ":
@@ -22,7 +22,7 @@ for x in name:
 # Define a route that returns JSON data
 @app.route('/anime', methods=['GET'])
 def get_data():
-    return {'name': name, 'ranking': userRating, 'genre': anime["Tags"], 'studio': studio}
+    return {'name': name, 'ranking': userRating, 'genre': anime["Genres"], 'studio': studio}
 
 # Define a route to increment the stage
 @app.route('/increment_stage', methods=['POST'])
