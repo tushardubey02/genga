@@ -12,6 +12,10 @@ anime = get_show() # Get the anime data
 stage = 0 # Set the stage to 0
 name,userRating,studio = anime["Name"],anime["Rating"],anime["Studio"] # Get the name, rating and status of the anime
 nameField, ratingField, statusField = "", "???", "???" # Initialize the fields 
+genre_list = anime["Tags"].split(", ")  # Split the genre string into a list
+genre = ", ".join(genre_list[:7])  # Join the first 5 elements back into a string
+# genre = anime["Tags"]  # Join the first 5 elements back into a string
+
 for x in name:
     if x != " ":
         nameField += "*"
@@ -22,7 +26,7 @@ for x in name:
 # Define a route that returns JSON data
 @app.route('/anime', methods=['GET'])
 def get_data():
-    return {'name': name, 'ranking': userRating, 'genre': anime["Tags"], 'studio': studio}
+    return {'name': name, 'ranking': userRating, 'genre': genre, 'studio': studio}
 
 # Define a route to increment the stage
 @app.route('/increment_stage', methods=['POST'])
