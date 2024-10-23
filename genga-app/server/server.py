@@ -10,7 +10,7 @@ CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://127.0.
 
 anime = get_show() # Get the anime data
 stage = 0 # Set the stage to 0
-name,userRating,studio = anime["Name"],anime["Rating"],anime["Studio"] # Get the name, rating and status of the anime
+name,userRating,studio,year,type = anime["Name"],anime["Rating"],anime["Studio"],anime["Release_year"],anime["Type"] # Get the name, rating and status of the anime
 nameField, ratingField, statusField = "", "???", "???" # Initialize the fields 
 genre_list = anime["Tags"].split(", ")  # Split the genre string into a list
 genre = ", ".join(genre_list[:7])  # Join the first 5 elements back into a string
